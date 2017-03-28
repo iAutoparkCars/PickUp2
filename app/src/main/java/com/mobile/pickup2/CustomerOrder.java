@@ -11,7 +11,7 @@ public class CustomerOrder
 {
     private String customerName;
     private Boolean isPaid = false;
-    private Integer imgButtonID = 0;    //this value can be hardcoded
+    private Integer imgButtonID;    //this value can be hardcoded
 
     //each order will have a hash map with order name, and quantity
     private String foodName = null;
@@ -26,4 +26,15 @@ public class CustomerOrder
         this.imgButtonID = imgButtonID;
         isPaid = paid;
     }
+
+    public Integer getimgButtonID()
+    {
+        return imgButtonID;
+    }
+
+    public String getcustomerName()
+    {return customerName;}
+
+    public Boolean getisPaid()
+    {return isPaid;}
 }
