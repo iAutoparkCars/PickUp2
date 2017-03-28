@@ -57,6 +57,13 @@ public class VendorOrderActivity extends AppCompatActivity
         imsick.put("elephant", 9);
         CustomerOrder order2 = new CustomerOrder("bob2",R.drawable.mouse,false,imsick);
         orders.add(order2);
+
+
+        orders.add(order2);orders.add(order2);
+        orders.add(order2);orders.add(order2);orders.add(order2);orders.add(order2);
+
+
+
     }
 
     //subclass MyListAdapter
