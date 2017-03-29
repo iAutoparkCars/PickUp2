@@ -38,6 +38,7 @@
         android:layout_below="@id/customer_name"
         />
 
+    <!-- Paid status commented out, b/c all orders are paid
     <TextView
         android:id="@+id/is_paid"
         android:text="isPaid"
@@ -49,6 +50,6 @@
         android:layout_toStartOf="@+id/done_button"
         android:paddingRight="4sp"
         android:paddingLeft="8sp"
-         />
+         /> -->
 
 </RelativeLayout>

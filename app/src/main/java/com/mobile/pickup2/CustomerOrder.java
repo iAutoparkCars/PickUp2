@@ -10,13 +10,13 @@ import java.util.HashMap;
 public class CustomerOrder
 {
     private String customerName;
-    private Boolean isPaid = false;
+    private Boolean isPaid = false;     //remove the isPaid
     private Integer imgButtonID;    //this value can be hardcoded
 
     //each order will have a hash map with order name, and quantity
     private String foodName = null;
     private Integer quantity = 0;
-    HashMap<String,Integer> foodList;
+    HashMap<String,Integer> foodList;   //<Food Name, Quantity>
 
     //create each CustomerOrder object in the main List with customer's name, status, and list of items
     public CustomerOrder(String custName, Integer imgButtonID, Boolean paid, HashMap<String,Integer> itemList)

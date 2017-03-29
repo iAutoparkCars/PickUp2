@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,8 +29,6 @@ public class VendorOrderActivity extends AppCompatActivity
         //referencing activity_vendor_order.xml; write code here
         populateOrderList();
         createOrderObject();
-
-
     }
 
     //creating the ListView of CustomerOrder objects using array Adapter
@@ -88,9 +87,21 @@ public class VendorOrderActivity extends AppCompatActivity
             CustomerOrder currentOrder = orders.get(position);
             ImageButton doneButton = (ImageButton) itemView.findViewById(R.id.done_button);
 
-            //load current Ordder object's image into ImageButton!
+            //load current Order object's image into ImageButton!
             doneButton.setImageResource(currentOrder.getimgButtonID());
 
+            //sets customer name
+            TextView customerName = (TextView) itemView.findViewById(R.id.customer_name);
+            customerName.setText(orders.get(position).getcustomerName());
+
+            //sets customer's foodList from the HashMap's keySet
+            TextView foodList = (TextView) itemView.findViewById(R.id.food_list);
+            String listString = "";
+            for (String i : orders.get(position).foodList.keySet())
+            {
+                listString = listString + i + "\n";
+            }
+            foodList.setText(listString);
 
             return itemView;
         }
