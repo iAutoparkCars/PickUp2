@@ -21,7 +21,7 @@ public class VendorOrderActivity extends AppCompatActivity
 {
 
     private List<CustomerOrder> orders = new ArrayList<CustomerOrder>();
-
+    ArrayAdapter<CustomerOrder> adapter1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,15 +32,15 @@ public class VendorOrderActivity extends AppCompatActivity
         //referencing activity_vendor_order.xml; write code here
         populateOrderList();
         createOrderObject();
-
     }
 
     //creating the ListView of CustomerOrder objects using array Adapter
-    private void createOrderObject()
+    public void createOrderObject()
     {
-        ArrayAdapter<CustomerOrder> adapter1 = new MyListAdapter();          //create array adaptor
+        adapter1 = new MyListAdapter();          //create array adaptor
         ListView orderList = (ListView) findViewById(R.id.order_list_view);  //create the list object
         orderList.setAdapter(adapter1);                                      //use List object to set
+
     }
 
 
@@ -91,14 +91,15 @@ public class VendorOrderActivity extends AppCompatActivity
             CustomerOrder currentOrder = orders.get(position);
             ImageButton doneButton = (ImageButton) itemView.findViewById(R.id.done_button);
 
-            //load current Order object's image into ImageButton!
+            //load current Order object's image into ImageButton; set listener
             doneButton.setImageResource(currentOrder.getimgButtonID());
-            MyOnClickListener listener = new MyOnClickListener();
+            MyOnClickListener listener = new MyOnClickListener(position);
             doneButton.setOnClickListener(listener);
 
-            //sets customer name
+            //sets crder# and customer name
+            String orderTitle = "Order#"+(int)(position+1) + ": " + orders.get(position).getcustomerName();
             TextView customerName = (TextView) itemView.findViewById(R.id.customer_name);
-            customerName.setText(orders.get(position).getcustomerName());
+            customerName.setText(orderTitle);
 
             //sets customer's foodList from the HashMap's keySet
             TextView foodList = (TextView) itemView.findViewById(R.id.food_list);
@@ -106,15 +107,27 @@ public class VendorOrderActivity extends AppCompatActivity
 
             return itemView;
         }
-        //if position=0, first object in list(order1). if pos=1, then 2nd object (order2), etc...
     }
 
     //when clicked ready, remove from list
     public class MyOnClickListener implements View.OnClickListener
     {
+        int pos = 0;
+        MyOnClickListener(int position)
+        {
+            pos = position;
+        }
+
+        //when ImageButton (ready) is clicked, remove the Order
         public void onClick(View v)
         {
-            Toast.makeText(VendorOrderActivity.this, "remove from list",Toast.LENGTH_LONG).show();
+            //use Toast for debugging
+            //int printPos = pos+1;
+            String removeMessage = "Finished Order#" + (int)(pos+1) + ". Removed from list!";
+            Toast.makeText(VendorOrderActivity.this, removeMessage,Toast.LENGTH_LONG).show();
+            adapter1.remove(orders.get(pos));
+            adapter1.notifyDataSetChanged();
         }
     }
+
 }
