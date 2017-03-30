@@ -32,6 +32,16 @@ public class CustomerOrder
         return imgButtonID;
     }
 
+    public String getFoodList()
+    {
+        String listString = "";
+        for (String i : foodList.keySet())
+        {
+            listString = listString + i + "\n";
+        }
+        return listString;
+    }
+
     public String getcustomerName()
     {return customerName;}
 

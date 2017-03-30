@@ -32,7 +32,7 @@
         android:text="food list WW w w w w  w w w"
         android:textSize="25sp"
         android:maxWidth="270dp"
-        android:paddingBottom="16dp"
+        android:paddingBottom="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/customer_name"

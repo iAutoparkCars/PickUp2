@@ -1,14 +1,17 @@
 package com.mobile.pickup2;
 
+import android.content.DialogInterface;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +32,7 @@ public class VendorOrderActivity extends AppCompatActivity
         //referencing activity_vendor_order.xml; write code here
         populateOrderList();
         createOrderObject();
+
     }
 
     //creating the ListView of CustomerOrder objects using array Adapter
@@ -61,9 +65,9 @@ public class VendorOrderActivity extends AppCompatActivity
         orders.add(order2);orders.add(order2);
         orders.add(order2);orders.add(order2);orders.add(order2);orders.add(order2);
 
-
-
     }
+
+
 
     //subclass MyListAdapter
     private class MyListAdapter extends ArrayAdapter<CustomerOrder>
@@ -89,6 +93,8 @@ public class VendorOrderActivity extends AppCompatActivity
 
             //load current Order object's image into ImageButton!
             doneButton.setImageResource(currentOrder.getimgButtonID());
+            MyOnClickListener listener = new MyOnClickListener();
+            doneButton.setOnClickListener(listener);
 
             //sets customer name
             TextView customerName = (TextView) itemView.findViewById(R.id.customer_name);
@@ -96,16 +102,19 @@ public class VendorOrderActivity extends AppCompatActivity
 
             //sets customer's foodList from the HashMap's keySet
             TextView foodList = (TextView) itemView.findViewById(R.id.food_list);
-            String listString = "";
-            for (String i : orders.get(position).foodList.keySet())
-            {
-                listString = listString + i + "\n";
-            }
-            foodList.setText(listString);
+            foodList.setText(orders.get(position).getFoodList());
 
             return itemView;
         }
         //if position=0, first object in list(order1). if pos=1, then 2nd object (order2), etc...
     }
 
+    //when clicked ready, remove from list
+    public class MyOnClickListener implements View.OnClickListener
+    {
+        public void onClick(View v)
+        {
+            Toast.makeText(VendorOrderActivity.this, "remove from list",Toast.LENGTH_LONG).show();
+        }
+    }
 }
