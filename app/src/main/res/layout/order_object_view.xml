@@ -4,14 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--background="#0000" makes background transparent (removes ugly grey)-->
     <ImageButton
         android:id="@+id/done_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/mouse"
+        app:srcCompat="@drawable/done_button"
+        android:background="#0000"
+        android:adjustViewBounds="true"
         android:maxWidth="70dp"
         android:maxHeight="70dp"
-        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -24,13 +27,14 @@
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="8sp"
+        android:paddingBottom="4sp"
         android:maxLines="2"/>
 
     <TextView
         android:id="@+id/food_list"
         android:text="food list WW w w w w  w w w"
-        android:textSize="25sp"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif=light"
         android:maxWidth="270dp"
         android:paddingBottom="8dp"
         android:layout_width="wrap_content"

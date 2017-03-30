@@ -51,20 +51,18 @@ public class VendorOrderActivity extends AppCompatActivity
         sotired.put("ham", 3);
         sotired.put("dirt", 4);
         sotired.put("lol", 1);
-        CustomerOrder order1 = new CustomerOrder("bob1",R.drawable.mouse,false,sotired);
+        CustomerOrder order1 = new CustomerOrder("bob1 (name)",R.drawable.done_button,false,sotired);
         orders.add(order1);
 
         HashMap<String, Integer> imsick = new HashMap<String,Integer>();
         imsick.put("ham", 3);
         imsick.put("dirt", 2);
         imsick.put("elephant", 9);
-        CustomerOrder order2 = new CustomerOrder("bob2",R.drawable.mouse,false,imsick);
+        CustomerOrder order2 = new CustomerOrder("bob2",R.drawable.done_button,false,imsick);
         orders.add(order2);
-
 
         orders.add(order2);orders.add(order2);
         orders.add(order2);orders.add(order2);orders.add(order2);orders.add(order2);
-
     }
 
 
